@@ -81,19 +81,6 @@ Collection `incidents` :
 
 Pour lister les incidents ouverts : `db.incidents.find({ statut: "non traité" })`
 
-## Dépannage
 
-| Symptôme | Piste |
-|---|---|
-| `ModuleNotFoundError: langchain_openrouter` | `python -m pip install -U langchain-openrouter` dans le même Python que le script |
-| Réponse vide | Modèle à raisonnement qui épuise `max_tokens` : choisir un modèle précis ou augmenter la limite |
-| `Connection unexpectedly closed` (email) | Essayer `SMTP_PORT = 465`, vérifier pare-feu, VPN et antivirus |
-| Pas de bouton « Traitement » dans l'email | MongoDB injoignable au moment de l'envoi : vérifier `MONGO_URI` |
-
-## Sécurité
-
-- La clé OpenRouter et le mot de passe SMTP sont écrits dans le fichier : ne pas le versionner ni le partager (ajouter à `.gitignore`).
-- Si `HOST = "0.0.0.0"`, l'interface (et donc l'usage de la clé OpenRouter) devient accessible depuis le réseau : l'isoler (VPN, pare-feu) ou ajouter une authentification.
-- Les textes et images d'incident sont envoyés au fournisseur du modèle via OpenRouter : les anonymiser si besoin.
-- L'analyse est générée automatiquement : l'équipe doit la vérifier avant toute action.
+|---|---- L'analyse est générée automatiquement : l'équipe doit la vérifier avant toute action.
 
